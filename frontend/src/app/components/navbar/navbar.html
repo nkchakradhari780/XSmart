@@ -1,0 +1,16 @@
+<header class="w-full h-[60px] shadow-md absolute top-0 z-20 ">
+  <div
+    class="w-[92%] mx-auto flex items-center justify-between p-4 h-[60px]"
+  >
+    <div class="flex items-center space-x-2">
+      <img src="header_logo.svg" alt="XSMART Logo" class="h-10 w-auto" />
+    </div>
+
+    <nav class="space-x-8 text-sm font-medium text-gray-800">
+      <a routerLink="/home" class="hover:text-blue-600">Home</a>
+      <a [routerLink]="['/home']" fragment="about" class="hover:text-blue-600">About</a>
+      <a routerLink="/products" class="hover:text-blue-600">Products</a>
+      <a [routerLink]="['/home']" fragment="contact" class="hover:text-blue-600">Contact</a>
+    </nav>
+  </div>
+</header>

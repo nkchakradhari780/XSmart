@@ -1,0 +1,117 @@
+<div class="bg-gray-50 rounded-2xl p-8 w-full max-w-xl shadow-sm" id="contact">
+  <h3 class="text-xl font-semibold mb-6">Send Us a Message</h3>
+  <form class="space-y-4">
+    <!-- Name and Email -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+          Full Name
+        </label>
+        <input
+          type="text"
+          placeholder="John Smith"
+          class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+                 text-[#6f7e85] placeholder-[#6f7e85] 
+                 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+          Email Address
+        </label>
+        <input
+          type="email"
+          placeholder="john@example.com"
+          class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+                 text-[#6f7e85] placeholder-[#6f7e85] 
+                 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+    </div>
+
+    <!-- Phone and Company -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+          Phone Number
+        </label>
+        <input
+          type="text"
+          placeholder="+1 (555) 123-4567"
+          class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+                 text-[#6f7e85] placeholder-[#6f7e85] 
+                 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+          Company
+        </label>
+        <input
+          type="text"
+          placeholder="Your Company Ltd."
+          class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+                 text-[#6f7e85] placeholder-[#6f7e85] 
+                 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+    </div>
+
+    <!-- Subject -->
+    <div>
+      <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+        Subject
+      </label>
+      <input
+        type="text"
+        placeholder="How can we help you?"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+               text-[#6f7e85] placeholder-[#6f7e85] 
+               focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+
+    <!-- Message -->
+    <div>
+      <label class="block text-sm font-medium text-[#6f7e85] mb-1">
+        Message
+      </label>
+      <textarea
+        rows="4"
+        placeholder="Please provide details about your inquiry..."
+        class="w-full border border-gray-300 rounded-md px-4 py-2 text-sm 
+               text-[#6f7e85] placeholder-[#6f7e85] 
+               focus:ring-blue-500 focus:border-blue-500"
+      ></textarea>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="flex items-start text-sm text-[#28343d]">
+      <input 
+        type="checkbox" 
+        class="mt-1 mr-2 border-gray-300 rounded" 
+      />
+      <label>
+        I agree to the
+        <a href="#" class="underline text-[#6f7e85]">Privacy Policy</a> and
+        consent to having my data processed.
+      </label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="space-y-2">
+      <button
+        type="submit"
+        class="w-full bg-[#28343d] text-white py-2 rounded-lg font-semibold hover:bg-gray-800"
+      >
+        Send Message
+      </button>
+      <button
+        class="w-[1/2] bg-gray-800 text-white py-2 px-4 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-gray-700 transition"
+      >
+        <img src="circle.svg" alt="" />
+        <span>Become a Partner</span>
+      </button>
+    </div>
+  </form>
+</div>

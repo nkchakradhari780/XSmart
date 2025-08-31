@@ -1,0 +1,65 @@
+<div
+  class="w-[294px] h-[496px] bg-white rounded-2xl shadow border border-gray-200 overflow-hidden flex flex-col group"
+>
+  <!-- Image section -->
+  <div class="relative w-[294px] h-[256px]">
+    <img
+      src="product.png"
+      alt="Product preview"
+      class="w-full h-full object-cover"
+    />
+
+    <!-- Preview button (appears on hover) -->
+    <div
+  class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+>
+  <button
+    class="w-[122px] h-[40px] bg-gray-200/50 text-gray-800 text-sm font-medium rounded-lg hover:bg-gray-300 transition"
+  >
+    Preview PDF
+  </button>
+</div>
+
+  </div>
+
+  <!-- Content -->
+  <div class="flex-1 p-4 space-y-3">
+    <!-- Tags -->
+    <div class="flex items-center gap-2 text-xs text-gray-600">
+      <span class="px-2 py-0.5 bg-gray-100 rounded-md">Product Catalog</span>
+      <span>Updated Aug 2025</span>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-lg font-semibold text-gray-800">Digital Full Body Tiles</h2>
+
+    <!-- Pages -->
+    <div class="flex items-center gap-2 text-sm text-gray-600">
+      <img src="pages.svg" alt="" />
+      46 Pages
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="p-4 border-t border-gray-100">
+    <button
+      class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-4 h-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+        />
+      </svg>
+      Download PDF
+    </button>
+  </div>
+</div>
