@@ -23,8 +23,6 @@ app.use(cors({
     credentials: process.env.CORS_CREDENTIALS
 }))
 
-
-
 const PORT = process.env.PORT
 
 app.listen(PORT, () => {
