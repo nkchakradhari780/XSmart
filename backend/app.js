@@ -6,6 +6,8 @@ import dotenv from 'dotenv'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
+import indexRoute from './routes/indexRoute.js'
+
 dotenv.config();
 import db from './config/dbConnection.js'
 
@@ -23,8 +25,10 @@ app.use(cors({
     credentials: process.env.CORS_CREDENTIALS
 }))
 
+app.use('/', indexRoute)
+
 const PORT = process.env.PORT
 
 app.listen(PORT, () => {
-    console.log("Server Started on port: " , PORT)
-})
+    console.log(`Server Started on port: ${PORT}`)
+}) 
