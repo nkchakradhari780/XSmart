@@ -33,7 +33,7 @@ export class Home implements AfterViewInit {
           }
         });
       },
-      { threshold: 0.3 } // triggers when 30% of section is visible
+      { threshold: 0 } // triggers when 30% of section is visible
     );
 
     observer.observe(heroSection);
