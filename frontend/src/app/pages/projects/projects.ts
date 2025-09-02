@@ -1,5 +1,4 @@
 import { Component, NgModule } from '@angular/core';
-import { ProjectPageHeader } from '../../components/project-page-header/project-page-header';
 import { CommonModule } from '@angular/common';
 import { ProjectPageCard } from "../../components/project-page-card/project-page-card";
 import { Footer } from "../../components/footer/footer";
@@ -8,7 +7,7 @@ import { Navbar } from "../../components/navbar/navbar";
 
 @Component({
   selector: 'app-projects',
-  imports: [ProjectPageHeader, CommonModule, ProjectPageCard, Footer, RouterLink, Navbar],
+  imports: [CommonModule, ProjectPageCard, Footer, RouterLink, Navbar],
   templateUrl: './projects.html',
   styleUrls: ['./projects.css']
 })

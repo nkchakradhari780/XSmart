@@ -1,25 +1,26 @@
-import db from '../config/dbConnection.js'
-
+import db from "../config/dbConnection.js";
 
 // Create product
-export const createProduct = async (name, imageBuffer, pdfBuffer,categoryIds = []) => {
+export const createProduct = async (
+  name,
+  imageBuffer,
+  pdfBuffer,
+  categoryIds = []
+) => {
   try {
-
     // Insert into Products
     const [result] = await db.query(
       "INSERT INTO Products (ProductName, Image, PdfFile) VALUES (?, ?, ?)",
       [name, imageBuffer, pdfBuffer]
     );
 
-
-
     const productId = result.insertId;
 
-    console.log("category ids", categoryIds)
+    console.log("category ids", categoryIds);
 
     // Insert into ProductCategories if categories are provided
     if (categoryIds.length > 0) {
-      const values = categoryIds.map(categoryId => [productId, categoryId]);
+      const values = categoryIds.map((categoryId) => [productId, categoryId]);
       await db.query(
         "INSERT INTO ProductCategories (ProductId, CategoryId) VALUES ?",
         [values]
@@ -31,7 +32,6 @@ export const createProduct = async (name, imageBuffer, pdfBuffer,categoryIds = [
     throw err;
   }
 };
-
 
 // Get all products (with image blob for performance)
 export const getAllProducts = async () => {
@@ -49,7 +49,6 @@ export const getAllProducts = async () => {
   );
   return rows;
 };
-
 
 // Get product by ID (with image blob)
 export const getProductById = async (id) => {
@@ -70,7 +69,13 @@ export const getProductById = async (id) => {
   return rows;
 };
 // Update product (with optional image + pdf + categories)
-export const updateProduct = async (id, name, imageBuffer, pdfBuffer, categoryIds = null) => {
+export const updateProduct = async (
+  id,
+  name,
+  imageBuffer,
+  pdfBuffer,
+  categoryIds = null
+) => {
   // --- Update Product ---
   if (imageBuffer && pdfBuffer) {
     await db.query(
@@ -88,10 +93,10 @@ export const updateProduct = async (id, name, imageBuffer, pdfBuffer, categoryId
       [name, pdfBuffer, id]
     );
   } else {
-    await db.query(
-      "UPDATE Products SET ProductName = ? WHERE ProductId = ?",
-      [name, id]
-    );
+    await db.query("UPDATE Products SET ProductName = ? WHERE ProductId = ?", [
+      name,
+      id,
+    ]);
   }
 
   // --- Update Categories only if provided ---
@@ -101,7 +106,7 @@ export const updateProduct = async (id, name, imageBuffer, pdfBuffer, categoryId
 
     if (categoryIds.length > 0) {
       // Build dynamic VALUES (?, ?) list
-      const values = categoryIds.map(catId => [id, catId]);
+      const values = categoryIds.map((catId) => [id, catId]);
       const placeholders = values.map(() => "(?, ?)").join(", ");
       const flatValues = values.flat();
 
@@ -114,8 +119,6 @@ export const updateProduct = async (id, name, imageBuffer, pdfBuffer, categoryId
 
   return { ProductId: id, ProductName: name, CategoryIds: categoryIds || [] };
 };
-
-
 
 // Delete product
 export const deleteProduct = async (id) => {
