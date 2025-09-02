@@ -15,7 +15,7 @@ const runInit = async () => {
   const DbName = process.env.DB_NAME;
 
   // Create DB if not exists
-  await db.execute(`CREATE DATABASE IF NOT EXISTS \`${DbName}\``);
+  await db.execute(`CREATE DATABASE IF NOT EXISTS ${DbName}`);
 
   // Switch to DB
   await db.changeUser({ database: DbName });
