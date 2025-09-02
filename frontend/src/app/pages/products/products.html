@@ -1,6 +1,7 @@
 <div class="min-h-screen flex flex-col">
   <!-- Navbar -->
-   <app-product-page-header/>
+   <!-- <app-product-page-header/> -->
+    <app-navbar [position]="'relative'" />
 
   <!-- Main Content -->
   <main class="flex-1 w-[85%] mx-auto px-4 sm:px-6 lg:px-8 py-2 pb-25">
@@ -9,6 +10,23 @@
         <span class="font-semibold text-[#9CA3AF] mb-6"> > </span>
         <span class="font-semibold text-[#111827] mb-6">Products</span>
     </div>
+
+ <div class="flex justify-end ml-6 mb-5">
+  <div class="relative w-full max-w-lg">
+    <!-- Search Icon -->
+    <img
+      src="search.svg"
+      alt="Search Icon"
+      class="absolute left-3 top-1/2 -translate-y-1/2"
+    />
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="w-full h-[38px] rounded-full border border-gray-300 pl-10 pr-4 
+             text-sm placeholder-gray-400 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+    />
+  </div>
+</div>
 
     <!-- Product Grid -->
     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

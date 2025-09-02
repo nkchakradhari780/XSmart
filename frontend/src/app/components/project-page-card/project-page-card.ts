@@ -16,8 +16,11 @@ export class ProjectPageCard implements AfterViewInit {
   ngAfterViewInit() {
     new Swiper('.mySwiper', {
       loop: true,
-      autoplay: { delay: 3000 },
-      pagination: { el: '.swiper-pagination', clickable: true },
+      autoplay: false, // no auto swiping
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // ✅ makes dots clickable
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

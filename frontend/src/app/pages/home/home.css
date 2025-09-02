@@ -28,24 +28,62 @@
 }
 
 .circle-icon {
- width: 40px;
- height: 40px;
- border-radius: 50%;
- background: #e7f0f8; /* Soft blue-gray, match your design */
- display: flex;
- align-items: center;
- justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e7f0f8; /* Soft blue-gray, match your design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .circle-icon-1 {
- width: 40px;
- height: 40px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .circle-icon img {
-width: 24px;
-height: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Initial state */
+.hero-content,
+.hero-image {
+  opacity: 0;
+}
+
+/* Animation classes */
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
 }

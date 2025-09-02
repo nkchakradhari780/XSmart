@@ -1,20 +1,24 @@
-<header class="w-full h-[68px] bg-white border-b border-gray-200 flex justify-center items-center">
+<header
+  class="w-full h-[68px] bg-white border-b border-gray-200 flex justify-center items-center"
+>
   <div class="w-[1280px] h-[68px] flex items-center relative">
-    
     <!-- Back to Home Button (Left) -->
-    <div class="absolute left-0 flex items-center gap-2 w-[140.62px] h-[32px]">
-      <button  routerLink="/home" class="w-[32px] h-[32px] flex items-center justify-center">
-        <img src="backArrow.svg" alt="Back" class="w-[32px] h-[32px]" />
-      </button>
-      <span class="w-[100.62px] h-[32px] flex items-center text-[#6f7e85] text-sm font-medium">
-        Back to Home
-      </span>
-    </div>
+    <button
+      routerLink="/home"
+      class="absolute left-0 flex items-center gap-2 px-3 py-1 cursor-pointer"
+    >
+      <!-- Icon -->
+      <div class="flex items-center justify-center">
+        <img src="backArrow.svg" alt="Back" class="w-6 h-6 " />
+        <span class="text-[#6f7e85] text-sm font-medium pb-[0.1rem]"> Back to Home </span>
+      </div>
+    </button>
 
     <!-- Logo (Centered) -->
-    <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-[140px] h-[32px]">
+    <div
+      class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-[140px] h-[32px]"
+    >
       <img src="header_logo.svg" alt="Logo" class="h-[32px] w-auto" />
     </div>
-    
   </div>
 </header>

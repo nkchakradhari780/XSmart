@@ -6,7 +6,7 @@ import { Navbar } from "../../components/navbar/navbar";
 
 @Component({
   selector: 'app-products',
-  imports: [ProductPageCard, ProductPageHeader, Footer],
+  imports: [ProductPageCard, ProductPageHeader, Footer, Navbar],
   templateUrl: './products.html',
   styleUrl: './products.css'
 })

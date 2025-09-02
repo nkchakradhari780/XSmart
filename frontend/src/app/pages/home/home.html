@@ -1,14 +1,12 @@
 <div>
-  <app-navbar/>
+  <app-navbar />
   <!-- Hero section -->
   <section
-  class="relative bg-cover bg-center bg-no-repeat flex hero-section items-center"
+    class="relative flex hero-section items-center overflow-hidden"
+    id="heroSection"
   >
-    <!-- White overlay for readability -->
-    <div class="overlay"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-4xl px-6 md:px-12">
+    <!-- Left Content -->
+    <div class="relative z-10 max-w-4xl px-6 md:px-12 hero-content">
       <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
         Redefining Surface Solutions <br />
         for Modern Architecture
@@ -19,75 +17,86 @@
       </p>
       <div class="flex gap-4">
         <button
-          class="bg-[#8e9ca0] hover:bg-gray-800 text-white px-6 py-3 rounded shadow"
+          class="bg-[#8e9ca0] hover:bg-gray-800 text-white px-6 py-3 rounded shadow cursor-pointer"
         >
           Explore Products
         </button>
         <button
-          class="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100"
+          class="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 cursor-pointer"
         >
           Contact Us
         </button>
       </div>
     </div>
+
+    <!-- Right Image Block -->
+    <div
+      class="absolute right-0 top-0 w-full h-full hero-image"
+      style="
+        background-image: url('/hero1.jpg');
+        background-size: cover;
+        background-position: center;
+      "
+    ></div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
   </section>
 
-  <section class="bg-white py-5.5 border border-gray-200 h-[113px]" >
+  <section class="bg-white py-6 border border-gray-200 h-auto lg:h-[113px]">
     <div
-      class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
+      class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-6"
     >
       <!-- Premium Quality -->
-      <div class="flex items-start space-x-3">
-        <!-- Icon -->
+      <div class="flex items-start space-x-3 flex-1 min-w-[200px]">
         <div class="shrink-0">
-          <img src="premiumQuality.svg" alt="" />
+          <img src="premiumQuality.svg" alt="Premium Quality" />
         </div>
-        <!-- Text -->
         <div>
           <h3 class="font-semibold text-gray-900">Premium Quality</h3>
-          <p class="text-sm text-gray-600">
+          <p class="text-sm text-[#404D54]">
             Superior materials, superior results
           </p>
         </div>
       </div>
 
       <!-- Strategic Partnerships -->
-      <div class="flex items-start space-x-3">
+      <div class="flex items-start space-x-3 flex-1 min-w-[200px]">
         <div class="shrink-0">
-          <img src="strategicPartnerships.svg" alt="" />
+          <img src="strategicPartnerships.svg" alt="Strategic Partnerships" />
         </div>
         <div>
           <h3 class="font-semibold text-gray-900">Strategic Partnerships</h3>
-          <p class="text-sm text-gray-600">Collaborative excellence</p>
+          <p class="text-sm text-[#404D54]">Collaborative excellence</p>
         </div>
       </div>
 
       <!-- Innovative Solutions -->
-      <div class="flex items-start space-x-3">
+      <div class="flex items-start space-x-3 flex-1 min-w-[200px]">
         <div class="shrink-0">
-          <img src="innovativeSolutions.svg" alt="" />
+          <img src="innovativeSolutions.svg" alt="Innovative Solutions" />
         </div>
         <div>
           <h3 class="font-semibold text-gray-900">Innovative Solutions</h3>
-          <p class="text-sm text-gray-600">Forward-thinking approaches</p>
+          <p class="text-sm text-[#404D54]">Forward-thinking approaches</p>
         </div>
       </div>
 
       <!-- Expert Consultation -->
-      <div class="flex items-start space-x-3">
+      <div class="flex items-start space-x-3 flex-1 min-w-[200px]">
         <div class="shrink-0">
-          <img src="expertconsultation.svg" alt="" />
+          <img src="expertconsultation.svg" alt="Expert Consultation" />
         </div>
         <div>
           <h3 class="font-semibold text-gray-900">Expert Consultation</h3>
-          <p class="text-sm text-gray-600">Personalized guidance</p>
+          <p class="text-sm text-[#404D54]">Personalized guidance</p>
         </div>
       </div>
 
       <!-- Sustainable Materials -->
-      <div class="flex items-start space-x-3">
+      <div class="flex items-start space-x-3 flex-1 min-w-[200px]">
         <div class="shrink-0">
-          <img src="sustainableMaterials.svg" alt="" />
+          <img src="sustainableMaterials.svg" alt="Sustainable Materials" />
         </div>
         <div>
           <h3 class="font-semibold text-gray-900">Sustainable Materials</h3>
@@ -234,7 +243,7 @@
       <div class="custom-dashed-border max-w-sm mt-5 text-center">
         <div class="p-4 inline-block">
           <button
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-900 rounded-lg text-gray-900 bg-white hover:bg-gray-50 text-sm font-medium transition"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-900 rounded-lg text-gray-900 bg-white hover:bg-gray-50 text-sm font-medium transition cursor-pointer"
           >
             <img src="viewAllProductsIcon.svg" alt="" />
             View All Products
@@ -266,7 +275,8 @@
       <!-- Button -->
       <div class="mt-12 text-center">
         <button
-          class="px-6 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-100 transition"
+          routerLink="/projects"
+          class="px-6 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-100 transition cursor-pointer"
         >
           View All Projects
         </button>
@@ -295,7 +305,9 @@
 
             <div>
               <h4 class="font-semibold text-gray-800">Office Location</h4>
-              <p class="text-sm text-gray-600">South Bhopal, Ahmedabad<br />Gujrat, India</p>
+              <p class="text-sm text-gray-600">
+                South Bhopal, Ahmedabad<br />Gujrat, India
+              </p>
             </div>
           </div>
 
@@ -308,21 +320,21 @@
               <p class="text-sm text-gray-600">+91 73833 13560</p>
             </div>
           </div>
-          
+
           <div class="flex items-start gap-3">
             <div class="circle-icon">
               <img src="email.svg" alt="Email" />
-             </div>
+            </div>
             <div>
               <h4 class="font-semibold text-gray-800">Email</h4>
               <p class="text-sm text-gray-600">xsmartsurfaces&#64;gmail.com</p>
             </div>
           </div>
-          
+
           <div class="flex items-start gap-3">
             <div class="circle-icon">
-               <img src="businessHours.svg" alt="businessHours" />
-             </div>
+              <img src="businessHours.svg" alt="businessHours" />
+            </div>
             <div>
               <h4 class="font-semibold text-gray-800">Business Hours</h4>
               <p class="text-sm text-gray-600">Monday - Sat: 9AM - 7PM</p>
@@ -332,28 +344,16 @@
 
         <!-- Social Icons -->
         <div class="mt-8 flex gap-4">
-          <a
-            href="#"
-            class="circle-icon-1 bg-gray-100 hover:bg-gray-200 "
-          >
+          <a href="#" class="circle-icon-1 bg-gray-100 hover:bg-gray-200">
             <img src="linkedIn.svg" alt="LinkedIn" />
           </a>
-          <a
-            href="#"
-            class="circle-icon-1 bg-gray-100 hover:bg-gray-200 "
-          >
+          <a href="#" class="circle-icon-1 bg-gray-100 hover:bg-gray-200">
             <img src="x.svg" alt="X" />
           </a>
-          <a
-            href="#"
-            class="circle-icon-1 bg-gray-100 hover:bg-gray-200 "
-          >
+          <a href="#" class="circle-icon-1 bg-gray-100 hover:bg-gray-200">
             <img src="insta.svg" alt="Instagram" />
           </a>
-          <a
-            href="#"
-            class="circle-icon-1 bg-gray-100 hover:bg-gray-200 "
-          >
+          <a href="#" class="circle-icon-1 bg-gray-100 hover:bg-gray-200">
             <img src="facebook.svg" alt="facebook" />
           </a>
         </div>
@@ -362,7 +362,6 @@
       <app-contact-card />
     </div>
   </section>
-
 
   <app-footer />
 </div>
