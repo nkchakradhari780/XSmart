@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS Products (
     ProductId INT AUTO_INCREMENT PRIMARY KEY,
     ProductName VARCHAR(255) NOT NULL,
-    Image LONGBLOB -- store actual image bytes
+    Image LONGBLOB,
+    PdfFile LONGBLOB
 );
