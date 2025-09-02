@@ -5,13 +5,14 @@ export const createProduct = async (
   name,
   imageBuffer,
   pdfBuffer,
+  pages,
   categoryIds = []
 ) => {
   try {
     // Insert into Products
     const [result] = await db.query(
-      "INSERT INTO Products (ProductName, Image, PdfFile) VALUES (?, ?, ?)",
-      [name, imageBuffer, pdfBuffer]
+      "INSERT INTO Products (ProductName, Image, PdfFile, Pages) VALUES (?, ?, ?, ?)",
+      [name, imageBuffer, pdfBuffer, pages]
     );
 
     const productId = result.insertId;
@@ -41,6 +42,7 @@ export const getAllProducts = async () => {
         p.ProductName,
         p.Image,
         p.PdfFile,
+        p.Pages,
         c.CategoryId,
         c.CategoryName
      FROM Products p
@@ -58,6 +60,7 @@ export const getProductById = async (id) => {
         p.ProductName,
         p.Image,
         p.PdfFile,
+        p.Pages,
         c.CategoryId,
         c.CategoryName
      FROM Products p
@@ -74,13 +77,14 @@ export const updateProduct = async (
   name,
   imageBuffer,
   pdfBuffer,
+  pages,
   categoryIds = null
 ) => {
   // --- Update Product ---
   if (imageBuffer && pdfBuffer) {
     await db.query(
-      "UPDATE Products SET ProductName = ?, Image = ?, PdfFile = ? WHERE ProductId = ?",
-      [name, imageBuffer, pdfBuffer, id]
+      "UPDATE Products SET ProductName = ?, Image = ?, PdfFile = ?, Pages = ? WHERE ProductId = ?",
+      [name, imageBuffer, pdfBuffer, pages, id]
     );
   } else if (imageBuffer) {
     await db.query(
@@ -89,8 +93,8 @@ export const updateProduct = async (
     );
   } else if (pdfBuffer) {
     await db.query(
-      "UPDATE Products SET ProductName = ?, PdfFile = ? WHERE ProductId = ?",
-      [name, pdfBuffer, id]
+      "UPDATE Products SET ProductName = ?, PdfFile = ?, Pages = ? WHERE ProductId = ?",
+      [name, pdfBuffer, pages, id]
     );
   } else {
     await db.query("UPDATE Products SET ProductName = ? WHERE ProductId = ?", [

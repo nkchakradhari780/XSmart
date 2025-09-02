@@ -9,7 +9,7 @@ import {
 // Create product
 export const addProduct = async (req, res) => {
   try {
-    const { ProductName, CategoryIds } = req.body;
+    const { ProductName, CategoryIds, Pages } = req.body;
 
     if (!ProductName) {
       return res.status(400).json({ error: "ProductName is required" });
@@ -36,6 +36,7 @@ export const addProduct = async (req, res) => {
       ProductName,
       imageBuffer,
       pdfBuffer,
+      Pages,
       categories
     );
 
@@ -59,6 +60,7 @@ export const fetchProducts = async (req, res) => {
         productsMap[row.ProductId] = {
           ProductId: row.ProductId,
           ProductName: row.ProductName,
+          Pages: row.Pages,
           Image: row.Image ? row.Image.toString("base64") : null,
           PdfFile: row.PdfFile ? row.PdfFile.toString("base64") : null,
           Categories: [],
@@ -95,6 +97,7 @@ export const fetchProductById = async (req, res) => {
     const product = {
       ProductId: rows[0].ProductId,
       ProductName: rows[0].ProductName,
+      Pages: rows[0].Pages,
       Image: rows[0].Image ? rows[0].Image.toString("base64") : null,
       PdfFile: rows[0].PdfFile ? rows[0].PdfFile.toString("base64") : null,
       Categories: [],
@@ -120,7 +123,7 @@ export const fetchProductById = async (req, res) => {
 export const modifyProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { ProductName, CategoryIds } = req.body;
+    const { ProductName, CategoryIds, Pages } = req.body;
 
     // Multer with .fields gives arrays in req.files
     const imageBuffer = req.files?.Image ? req.files.Image[0].buffer : null;
@@ -143,6 +146,7 @@ export const modifyProduct = async (req, res) => {
       ProductName,
       imageBuffer,
       pdfBuffer,
+      Pages,
       categoryIds
     );
 
