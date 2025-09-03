@@ -1,0 +1,5 @@
+-- Materials Table
+CREATE TABLE IF NOT EXISTS Materials (
+    MaterialId INT AUTO_INCREMENT PRIMARY KEY,
+    MaterialName VARCHAR(100) NOT NULL UNIQUE
+);

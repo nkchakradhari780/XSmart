@@ -53,6 +53,26 @@ export const getAllProducts = async () => {
   return rows;
 };
 
+export const getLatestProducts = async () => {
+  try {
+    const [rows] = await db.query(
+      `SELECT 
+         ProductId,
+         ProductName,
+         Image,
+         PdfFile
+       FROM Products
+       ORDER BY Updated_at DESC
+       LIMIT 3`
+    );
+
+    console.log("Rows", rows[0])
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // Get product by ID (with image blob)
 export const getProductById = async (id) => {
   const [rows] = await db.query(

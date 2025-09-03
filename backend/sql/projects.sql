@@ -1,0 +1,10 @@
+-- Projects Table
+CREATE TABLE IF NOT EXISTS Projects (
+    ProjectId INT AUTO_INCREMENT PRIMARY KEY,
+    ProjectName VARCHAR(255) NOT NULL,
+    Description TEXT,
+    Associates TEXT,
+    CompletionYear YEAR,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

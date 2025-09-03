@@ -6,6 +6,7 @@ import {
   fetchProductById,
   modifyProduct,
   removeProduct,
+  fetchLatestProducts
 } from "../controllers/productControllers.js";
 
 const router = express.Router();
@@ -21,5 +22,6 @@ router.get("/", fetchProducts);
 router.get("/:id", fetchProductById);
 router.put("/:id", multiUpload, modifyProduct);
 router.delete("/:id", removeProduct);
+router.get("/latest/three", fetchLatestProducts);
 
 export default router;

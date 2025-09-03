@@ -21,7 +21,11 @@ const runInit = async () => {
   await db.changeUser({ database: DbName });
 
   const sqlFolder = path.resolve("sql");
-  const orderedFiles = ["products.sql", "categories.sql", "productCategories.sql"];
+  const orderedFiles = [
+    "products.sql", "categories.sql", "productCategories.sql",
+    "projects.sql", "materials.sql", "projectMaterials.sql",
+    "tags.sql", "projectTags.sql"
+  ];
 
   for (const file of orderedFiles) {
     const filePath = path.join(sqlFolder, file);

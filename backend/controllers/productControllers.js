@@ -4,6 +4,7 @@ import {
   getProductById,
   updateProduct,
   deleteProduct,
+  getLatestProducts
 } from "../services/productServices.js";
 
 // Create product
@@ -100,6 +101,32 @@ export const fetchProducts = async (req, res) => {
   }
 };
 
+export const fetchLatestProducts = async (req, res) => {
+  try {
+    const products = await getLatestProducts();
+
+    // Convert BLOBs (Image, PdfFile) to base64 if needed
+    const formatted = products.map(p => ({
+      ...p,
+      Image: p.Image ? p.Image.toString("base64") : null,
+      PdfFile: p.PdfFile ? p.PdfFile.toString("base64") : null,
+    }));
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Products Featched Success Fully",
+        result: formatted,
+      });
+  } catch (error) {
+    console.error("Error fetching latest products:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
 // Get product by ID
 export const fetchProductById = async (req, res) => {
   try {
