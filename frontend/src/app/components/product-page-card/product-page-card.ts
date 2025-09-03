@@ -44,4 +44,9 @@ export class ProductPageCard {
     URL.revokeObjectURL(link.href);
   }
 
+  getImageSrc(base64: string | null): string {
+  return base64 ? `data:image/png;base64,${base64}` : 'assets/placeholder.png';
+}
+
+
 }

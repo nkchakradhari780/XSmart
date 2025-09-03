@@ -4,7 +4,7 @@
   <!-- Image section -->
   <div class="relative w-[294px] h-[256px]">
     <img
-      src="product.png"
+      [src]="getImageSrc(product?.Image)"
       alt="Product preview"
       class="w-full h-full object-cover"
     />
@@ -36,7 +36,7 @@
     <!-- Pages -->
     <div class="flex items-center gap-2 text-sm text-gray-600">
       <img src="pages.svg" alt="" />
-      46 Pages
+      {{product.Pages}} Pages
     </div>
   </div>
 

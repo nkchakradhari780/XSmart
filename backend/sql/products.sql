@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS Products (
     ProductName VARCHAR(255) NOT NULL,
     Image LONGBLOB,
     PdfFile LONGBLOB,
-    Pages INT
+    Pages INT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

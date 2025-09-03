@@ -12,7 +12,9 @@ export const addProduct = async (req, res) => {
     const { ProductName, CategoryIds, Pages } = req.body;
 
     if (!ProductName) {
-      return res.status(400).json({ error: "ProductName is required" });
+      return res
+        .status(400)
+        .json({ success: false, error: "ProductName is required" });
     }
 
     // File uploads: assuming multer handles multiple fields
@@ -27,7 +29,9 @@ export const addProduct = async (req, res) => {
           ? CategoryIds
           : JSON.parse(CategoryIds);
       } catch (err) {
-        return res.status(400).json({ error: "Invalid CategoryIds format" });
+        return res
+          .status(400)
+          .json({ success: false, error: "Invalid CategoryIds format" });
       }
     }
 
@@ -40,7 +44,13 @@ export const addProduct = async (req, res) => {
       categories
     );
 
-    res.status(201).json(product);
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Product Created Successfully.",
+        product,
+      });
   } catch (err) {
     console.error("Error adding product:", err);
     res.status(500).json({ error: err.message });
@@ -63,6 +73,7 @@ export const fetchProducts = async (req, res) => {
           Pages: row.Pages,
           Image: row.Image ? row.Image.toString("base64") : null,
           PdfFile: row.PdfFile ? row.PdfFile.toString("base64") : null,
+          Updated_at: row.Updated_at,
           Categories: [],
         };
       }
@@ -76,10 +87,16 @@ export const fetchProducts = async (req, res) => {
     });
 
     const products = Object.values(productsMap);
-    res.status(200).json({ response: "Products Featched Success Fully", result: products });
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Products Featched Success Fully",
+        result: products,
+      });
   } catch (err) {
     console.error("Error fetching products:", err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ success: false, error: err.message });
   }
 };
 
@@ -90,7 +107,9 @@ export const fetchProductById = async (req, res) => {
     const rows = await getProductById(id);
 
     if (!rows || rows.length === 0) {
-      return res.status(404).json({ error: "Product not found" });
+      return res
+        .status(404)
+        .json({ success: false, error: "Product not found" });
     }
 
     // Build product with categories
@@ -100,6 +119,7 @@ export const fetchProductById = async (req, res) => {
       Pages: rows[0].Pages,
       Image: rows[0].Image ? rows[0].Image.toString("base64") : null,
       PdfFile: rows[0].PdfFile ? rows[0].PdfFile.toString("base64") : null,
+      Updated_at: rows[0].Updated_at,
       Categories: [],
     };
 
@@ -112,7 +132,13 @@ export const fetchProductById = async (req, res) => {
       }
     });
 
-    res.json(product);
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Product Fetched Successfully",
+        product,
+      });
   } catch (err) {
     console.error("Error fetching product:", err);
     res.status(500).json({ error: err.message });
@@ -150,10 +176,13 @@ export const modifyProduct = async (req, res) => {
       categoryIds
     );
 
-    res.json(product);
+    res.status(200).json({ success: true, product });
   } catch (err) {
+    if (err.message === "Product not found") {
+      return res.status(404).json({ error: err.message });
+    }
     console.error("Error updating product:", err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ success: false, error: err.message });
   }
 };
 
@@ -162,8 +191,13 @@ export const removeProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await deleteProduct(id);
-    res.json(result);
+    res
+      .status(200)
+      .json({ success: true, message: "Product Deleted Successfully." });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    if (err.message === "Product not found") {
+      return res.status(404).json({ success: false, error: err.message });
+    }
+    res.status(500).json({ success: false, error: err.message });
   }
 };

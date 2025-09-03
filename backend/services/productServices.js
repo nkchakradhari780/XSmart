@@ -43,6 +43,7 @@ export const getAllProducts = async () => {
         p.Image,
         p.PdfFile,
         p.Pages,
+        p.Updated_at,
         c.CategoryId,
         c.CategoryName
      FROM Products p
@@ -61,6 +62,7 @@ export const getProductById = async (id) => {
         p.Image,
         p.PdfFile,
         p.Pages,
+        p.Updated_at,
         c.CategoryId,
         c.CategoryName
      FROM Products p
@@ -80,6 +82,14 @@ export const updateProduct = async (
   pages,
   categoryIds = null
 ) => {
+  const [existing] = await db.execute(
+    "SELECT ProductId FROM Products WHERE ProductId = ?",
+    [id]
+  );
+
+  if (existing.length === 0) {
+    throw new Error("Product not found");
+  }
   // --- Update Product ---
   if (imageBuffer && pdfBuffer) {
     await db.query(
@@ -126,6 +136,14 @@ export const updateProduct = async (
 
 // Delete product
 export const deleteProduct = async (id) => {
+  const [existing] = await db.execute(
+    "SELECT ProductId FROM Products WHERE ProductId = ?",
+    [id]
+  );
+
+  if (existing.length === 0) {
+    throw new Error("Product not found");
+  }
   await db.query("DELETE FROM Products WHERE ProductId = ?", [id]);
   await db.query("DELETE FROM ProductCategories WHERE ProductId = ?", [id]);
   return { message: `Product ${id} deleted successfully` };
