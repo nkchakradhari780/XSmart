@@ -156,3 +156,18 @@ export const deleteProjectById = async (req, res) => {
   }
 };
 
+
+export const getLatestProjects = async (req, res) => {
+  try {
+    const projects = await projectService.getLatestProjects();
+
+    res.status(200).json({
+      message: "Latest 3 projects fetched successfully",
+      projects,
+    });
+  } catch (err) {
+    console.error("Error in getLatestProjects controller:", err);
+    res.status(500).json({ error: err.message });
+  }
+};
+

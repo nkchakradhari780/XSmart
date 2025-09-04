@@ -251,3 +251,50 @@ export const deleteProjectById = async (projectId) => {
   }
 };
 
+export const getLatestProjects = async () => {
+  try {
+    // Get latest 3 projects
+    const [projects] = await db.query(
+      `SELECT ProjectId, ProjectName, Description, Associates, CompletionYear, Created_at, Updated_at
+       FROM Projects
+       ORDER BY COALESCE(Updated_at, Created_at) DESC
+       LIMIT 3`
+    );
+
+    for (const project of projects) {
+      const [tags] = await db.query(
+        `SELECT t.TagName 
+         FROM ProjectTags pt 
+         JOIN Tags t ON pt.TagId = t.TagId 
+         WHERE pt.ProjectId = ?`,
+        [project.ProjectId]
+      );
+
+      const [materials] = await db.query(
+        `SELECT m.MaterialName 
+         FROM ProjectMaterials pm 
+         JOIN Materials m ON pm.MaterialId = m.MaterialId 
+         WHERE pm.ProjectId = ?`,
+        [project.ProjectId]
+      );
+
+      const [images] = await db.query(
+        `SELECT Image FROM ProjectImages WHERE ProjectId = ?`,
+        [project.ProjectId]
+      );
+
+      project.Tags = tags.map((t) => t.TagName);
+      project.Materials = materials.map((m) => m.MaterialName);
+
+      // ✅ Convert binary -> Base64
+      project.Images = images.map((i) =>
+        i.Image ? i.Image.toString("base64") : null
+      );
+    }
+
+    return projects;
+  } catch (err) {
+    console.error("Error in getLatestProjects service:", err);
+    throw err;
+  }
+};
