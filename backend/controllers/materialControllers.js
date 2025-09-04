@@ -4,6 +4,7 @@ import * as materialService from "../services/materialsServices.js";
 export const createMaterial = async (req, res) => {
   try {
     const { MaterialName } = req.body;
+
     if (!MaterialName) {
       return res.status(400).json({ error: "MaterialName is required" });
     }
