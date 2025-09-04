@@ -16,7 +16,7 @@ const runInit = async () => {
 
   // Create DB if not exists
   await db.execute(`CREATE DATABASE IF NOT EXISTS ${DbName}`);
-
+ 
   // Switch to DB
   await db.changeUser({ database: DbName });
 
@@ -24,7 +24,7 @@ const runInit = async () => {
   const orderedFiles = [
     "products.sql", "categories.sql", "productCategories.sql",
     "projects.sql", "materials.sql", "projectMaterials.sql",
-    "tags.sql", "projectTags.sql"
+    "tags.sql", "projectTags.sql", "projectImages.sql"
   ];
 
   for (const file of orderedFiles) {
