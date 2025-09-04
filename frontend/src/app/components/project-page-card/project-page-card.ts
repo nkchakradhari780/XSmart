@@ -20,28 +20,33 @@ export class ProjectPageCard implements OnChanges, AfterViewInit {
 
   projectTags: Tag[] = [];
   projectMaterials: Material[] = [];
-  projectImages: string[] = [];  // ✅ renamed for clarity
+  projectImages: string[] = [];  
 
   ngOnChanges() {
     this.projectTags = this.project?.Tags || [];
     this.projectMaterials = this.project?.Materials || [];
 
-    // ✅ reset before pushing to avoid duplicates
-    this.projectImages = this.project?.Images?.map((img: any) => img.Base64) || [];
+    // ✅ handles both [{Base64: "..."}] and ["..."]
+    this.projectImages = this.project?.Images?.map((img: any) => img.Base64 || img) || [];
+
+    console.log("Loaded project images:", this.projectImages);
   }
 
   ngAfterViewInit() {
-    new Swiper('.mySwiper', {
-      loop: true,
-      autoplay: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }
+    // Delay init until DOM is ready
+    setTimeout(() => {
+      new Swiper('.mySwiper', {
+        loop: true,
+        autoplay: false,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      });
     });
   }
 

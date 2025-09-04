@@ -6,11 +6,16 @@ import productRoute from './productsRoute.js'
 import tagRoute from './tagRoute.js'
 import materialRoute from './materialRoute.js'
 import projectRoute from './projectRoute.js'
+import adminRoutes from './adminRoute.js'
+import dotenv from 'dotenv'
+dotenv.config();
 
-router.get('/', (req, res) => {
-  res.json({ message: "Index Route working!" });
-});
-
+if (process.env.NODE_ENV === "development") {
+    router.use("/admins", adminRoutes);
+  console.log("⚡ Admin routes enabled (development only)");
+} else {
+    console.log("🚫 Admin routes disabled in production");
+}
 router.use('/category', categoryRoute);
 router.use('/product', productRoute);
 router.use('/tag', tagRoute);

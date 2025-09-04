@@ -25,10 +25,12 @@ app.use(cors({
     credentials: process.env.CORS_CREDENTIALS
 }))
 
+console.log('ENV:', process.env.NODE_ENV)
+
 app.use('/', indexRoute)
 
 const PORT = process.env.PORT
-
+ 
 app.listen(PORT, () => {
     console.log(`Server Started on port: ${PORT}`)
 }) 
