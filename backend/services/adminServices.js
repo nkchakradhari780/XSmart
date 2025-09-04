@@ -1,5 +1,9 @@
 import db from "../config/dbConnection.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || "supersecret"; // store in .env
+
 
 // Create new admin
 export const createAdmin = async ({ fullName, email, password, role }) => {
@@ -26,7 +30,7 @@ export const getAdminById = async (id) => {
     `SELECT AdminId, FullName, Email, Role, IsActive, CreatedAt, UpdatedAt 
      FROM Admins WHERE AdminId = ?`,
     [id]
-  );
+  ); 
   return rows[0];
 };
 
@@ -45,3 +49,36 @@ export const deleteAdmin = async (id) => {
   return { message: "Admin deleted successfully" };
 };
 
+
+// 🔑 Login service
+export const loginAdmin = async (Email, Password) => {
+  const [rows] = await db.query(
+    "SELECT * FROM Admins WHERE Email = ? AND IsActive = TRUE LIMIT 1",
+    [Email]
+  );
+
+  if (rows.length === 0) {
+    throw new Error("Invalid email or password");
+  }
+
+  const admin = rows[0];
+
+  const match = await bcrypt.compare(Password, admin.PasswordHash);
+  if (!match) {
+    throw new Error("Invalid email or password");
+  }
+
+  // generate JWT
+  const token = jwt.sign(
+    { AdminId: admin.AdminId, Role: admin.Role },
+    JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+
+  return { admin, token };
+};
+
+// 🚪 Logout service (no DB changes, just clear cookie)
+export const logoutAdmin = () => {
+  return true;
+};

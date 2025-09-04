@@ -6,13 +6,14 @@ import {
   modifyCategory,
   removeCategory,
 } from "../controllers/categoriesControllers.js";
+import { verifyAdmin } from "../middlewares/authAdmin.js";
 
 const router = express.Router();
 
-router.post("/", addCategory);
+router.post("/", verifyAdmin, addCategory);
 router.get("/", fetchCategories);
 router.get("/:id", fetchCategoryById);
-router.put("/:id", modifyCategory);
-router.delete("/:id", removeCategory);
+router.put("/:id", verifyAdmin, modifyCategory);
+router.delete("/:id", verifyAdmin, removeCategory);
 
 export default router;

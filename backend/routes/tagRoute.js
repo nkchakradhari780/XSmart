@@ -1,12 +1,12 @@
 import express from "express";
 import * as tagController from "../controllers/tagControllers.js";
-
+import { verifyAdmin } from "../middlewares/authAdmin.js";
 const router = express.Router();
 
-router.post("/", tagController.createTag);     // Create
-router.get("/", tagController.getAllTags);     // Read All
-router.get("/:id", tagController.getTagById);  // Read One
-router.put("/:id", tagController.updateTag);   // Update
-router.delete("/:id", tagController.deleteTag);// Delete
+router.post("/", verifyAdmin, tagController.createTag);     
+router.get("/", tagController.getAllTags);     
+router.get("/:id", tagController.getTagById);  
+router.put("/:id", verifyAdmin, tagController.updateTag);   
+router.delete("/:id", verifyAdmin, tagController.deleteTag);
 
 export default router;

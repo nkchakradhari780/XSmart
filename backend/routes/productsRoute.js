@@ -9,6 +9,8 @@ import {
   fetchLatestProducts
 } from "../controllers/productControllers.js";
 
+import { verifyAdmin } from "../middlewares/authAdmin.js";
+
 const router = express.Router();
 const upload = multer(); // store in memory
 
@@ -17,11 +19,11 @@ const multiUpload = upload.fields([
   { name: "PdfFile", maxCount: 1 }
 ]);
 
-router.post("/", multiUpload, addProduct);
+router.post("/", verifyAdmin, multiUpload, addProduct);
 router.get("/", fetchProducts);
 router.get("/:id", fetchProductById);
-router.put("/:id", multiUpload, modifyProduct);
-router.delete("/:id", removeProduct);
 router.get("/latest/three", fetchLatestProducts);
+router.put("/:id", verifyAdmin, multiUpload, modifyProduct);
+router.delete("/:id", verifyAdmin, removeProduct);
 
 export default router;
