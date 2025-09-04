@@ -5,16 +5,37 @@ import { ProjectsCard } from '../../components/projects-card/projects-card';
 import { ContactCard } from '../../components/contact-card/contact-card';
 import { Footer } from "../../components/footer/footer";
 import { RouterLink } from '@angular/router';
+import { Product, ProductResponse, ProductService } from '../../services/product-service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
-  imports: [Navbar, ProductsCard, ProjectsCard, ContactCard, Footer, RouterLink],
+  imports: [Navbar, ProductsCard, ProjectsCard, ContactCard, Footer, RouterLink, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 
 export class Home implements AfterViewInit {
+
+  data!: ProductResponse;
+  products: Product[] = [];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getLatestProducts().subscribe({
+      next: (response) => {
+        this.data = response;
+        this.products = this.data.result;
+        console.log("Response: ", this.products)
+      },
+      error: (err) => {
+        console.error('Error fetching products:', err);
+      }
+    });
+  }
+
   ngAfterViewInit() {
     const heroSection = document.querySelector('#heroSection')!;
     const content = heroSection.querySelector('.hero-content')!;

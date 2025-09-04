@@ -234,18 +234,18 @@
 
       <!-- Product Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <app-products-card />
-        <app-products-card />
-        <app-products-card />
+        <div *ngFor =" let product of products" class="up-animation">
+          <app-products-card [product]="product" />
+        </div>
       </div>
 
       <!-- View All Products Button -->
       <div class="custom-dashed-border max-w-sm mt-5 text-center">
         <div class="p-4 inline-block">
-          <button
+          <button routerLink="/products"
             class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-900 rounded-lg text-gray-900 bg-white hover:bg-gray-50 text-sm font-medium transition cursor-pointer"
           >
-            <img src="viewAllProductsIcon.svg" alt="" />
+            <img  alt="" />
             View All Products
           </button>
         </div>

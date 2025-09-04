@@ -1,17 +1,19 @@
 <div class="max-w-sm rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white">
   <!-- Product Image -->
-  <img src="product1.png" alt="Tile Collection" class="w-full h-[240px] object-cover rounded-t-xl">
+  <img [src]="getImageSrc(product?.Image)" alt="Tile Collection" class="w-full h-[240px] object-cover rounded-t-xl">
 
   <!-- Card Content -->
   <div class="p-5 space-y-4">
     
     <!-- Title -->
-    <h3 class="text-lg font-semibold text-gray-900 ">Premium Tile Collections</h3>
+    <h3 class="text-lg font-semibold text-gray-900 ">{{product.ProductName}}</h3>
 
     <!-- View Details -->
     <div>
-      <a href="#" class="text-sm font-medium text-[#28343D] hover:underline inline-flex items-center ">
-        View Details
+      <a (click)="downloadPdf(product?.PdfFile, product?.ProductName + '.pdf')" class="text-sm font-medium text-[#28343D] hover:underline inline-flex items-center cursor-pointer ">
+        <span class="mt-0.5">
+        View Details 
+        </span>
         <svg class="ml-1 w-4 h-4 pt-1" fill="none" stroke="currentColor" stroke-width="2"
              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14M12 5l7 7-7 7" />

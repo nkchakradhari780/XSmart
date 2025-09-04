@@ -1,17 +1,16 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-page-card',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, DatePipe],
   templateUrl: './product-page-card.html',
-  styleUrl: './product-page-card.css'
+  styleUrls: ['./product-page-card.css']
 })
 export class ProductPageCard {
   @Input() product: any;
 
-  ngOnInit() {
-    console.log('Product details:', this.product);
-  }
   // product-page-card.component.ts
   openPdf(base64Pdf: string) {
     const byteCharacters = atob(base64Pdf);
@@ -22,7 +21,7 @@ export class ProductPageCard {
     const byteArray = new Uint8Array(byteNumbers);
     const blob = new Blob([byteArray], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
-    window.open(url, '_blank'); // <-- Opens PDF in new tab
+    window.open(url, '_blank'); // Opens PDF in new tab
   }
 
   downloadPdf(base64Pdf: string, fileName: string = 'document.pdf') {
@@ -45,8 +44,6 @@ export class ProductPageCard {
   }
 
   getImageSrc(base64: string | null): string {
-  return base64 ? `data:image/png;base64,${base64}` : 'assets/placeholder.png';
-}
-
-
+    return base64 ? `data:image/png;base64,${base64}` : 'assets/placeholder.png';
+  }
 }

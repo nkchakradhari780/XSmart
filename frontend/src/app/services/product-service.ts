@@ -17,6 +17,10 @@ export class ProductService {
     return this.http.get<ProductResponse>('http://localhost:3000/product');
   }
 
+  getLatestProducts(): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>('http://localhost:3000/product/latest/three');
+  }
+
 }
 
 export class Product {
