@@ -61,7 +61,7 @@ export const getProjectById = async (req, res) => {
 
     res.status(200).json({
       message: "Project fetched successfully",
-      project,
+      result: project,
     });
   } catch (err) {
     console.error("Error in getProjectById controller:", err);
@@ -76,7 +76,7 @@ export const getAllProjects = async (req, res) => {
 
     res.status(200).json({
       message: "Projects fetched successfully",
-      projects,
+      result: projects,
     });
   } catch (err) {
     console.error("Error in getAllProjects controller:", err);
@@ -163,7 +163,7 @@ export const getLatestProjects = async (req, res) => {
 
     res.status(200).json({
       message: "Latest 3 projects fetched successfully",
-      projects,
+      result: projects,
     });
   } catch (err) {
     console.error("Error in getLatestProjects controller:", err);

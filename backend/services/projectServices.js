@@ -286,7 +286,6 @@ export const getLatestProjects = async () => {
       project.Tags = tags.map((t) => t.TagName);
       project.Materials = materials.map((m) => m.MaterialName);
 
-      // ✅ Convert binary -> Base64
       project.Images = images.map((i) =>
         i.Image ? i.Image.toString("base64") : null
       );

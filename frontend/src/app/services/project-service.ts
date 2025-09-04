@@ -13,7 +13,9 @@ export class ProjectService {
     return this.http.get<ProjectResponse>(`http://localhost:3000/project/`)
   }
 
-  
+  getLatestProjects(): Observable<ProjectResponse> {
+    return this.http.get<ProjectResponse>('http://localhost:3000/project/latest/three')
+  }
 
 }
 

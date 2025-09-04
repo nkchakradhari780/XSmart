@@ -18,7 +18,7 @@ router.put(
 );
 router.get("/", projectController.getAllProjects);
 router.get("/:id", projectController.getProjectById);
-router.get("/latest/pr", projectController.getLatestProjects);
+router.get("/latest/three", projectController.getLatestProjects);
 router.delete("/:id", projectController.deleteProjectById);
 
 export default router;

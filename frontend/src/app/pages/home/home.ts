@@ -7,6 +7,7 @@ import { Footer } from "../../components/footer/footer";
 import { RouterLink } from '@angular/router';
 import { Product, ProductResponse, ProductService } from '../../services/product-service';
 import { CommonModule } from '@angular/common';
+import { ProjectResponse, ProjectService } from '../../services/project-service';
 
 
 @Component({
@@ -21,7 +22,10 @@ export class Home implements AfterViewInit {
   data!: ProductResponse;
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  projectData!: ProjectResponse;
+  projects: any[] = [];
+
+  constructor(private productService: ProductService, private projectService: ProjectService) {}
 
   ngOnInit() {
     this.productService.getLatestProducts().subscribe({
@@ -34,6 +38,17 @@ export class Home implements AfterViewInit {
         console.error('Error fetching products:', err);
       }
     });
+    
+    this.projectService.getLatestProjects().subscribe({
+      next: (response) => {
+        this.projectData = response;
+        this.projects = this.projectData.result;
+        console.log("Projects: ", this.projects);
+      },
+      error: (err) => {
+        console.error('Error fetching projects:', err);
+      }
+    })
   }
 
   ngAfterViewInit() {
