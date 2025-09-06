@@ -93,6 +93,7 @@ export const getProductById = async (id) => {
   );
   return rows;
 };
+
 // Update product (with optional image + pdf + categories)
 export const updateProduct = async (
   id,

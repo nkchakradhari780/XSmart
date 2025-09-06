@@ -1,0 +1,90 @@
+<!-- Add Product Form - Dark Theme -->
+<div class="max-w-3xl mx-auto mt-10 p-6 bg-gray-800 rounded-lg shadow-lg text-gray-200">
+  <h2 class="text-2xl font-semibold mb-6 text-white">Add New Product</h2>
+
+  <form action="/your-backend-endpoint" method="POST" enctype="multipart/form-data" class="space-y-6">
+
+    <!-- Product Name -->
+    <div>
+      <label class="block mb-2 font-medium text-gray-300">Product Name</label>
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="Enter product name" 
+        class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      >
+    </div>
+
+    <!-- Pages -->
+    <div>
+      <label class="block mb-2 font-medium text-gray-300">Pages</label>
+      <input 
+        type="number" 
+        name="pages" 
+        placeholder="Number of pages" 
+        min="1"
+        class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      >
+    </div>
+
+    <!-- Categories -->
+    <div>
+      <label class="block mb-2 font-medium text-gray-300">Categories</label>
+      <div class="flex flex-wrap gap-4">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="categoryIds[]" value="1" class="w-4 h-4 text-blue-500 border-gray-600 rounded bg-gray-800">
+          <span>Electronics</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="categoryIds[]" value="2" class="w-4 h-4 text-blue-500 border-gray-600 rounded bg-gray-800">
+          <span>Books</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="categoryIds[]" value="3" class="w-4 h-4 text-blue-500 border-gray-600 rounded bg-gray-800">
+          <span>Clothing</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="categoryIds[]" value="4" class="w-4 h-4 text-blue-500 border-gray-600 rounded bg-gray-800">
+          <span>Toys</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div>
+      <label class="block mb-2 font-medium text-gray-300">Product Image</label>
+      <input 
+        type="file" 
+        name="image" 
+        accept="image/*"
+        class="block w-full text-gray-200 file:border file:border-gray-600 file:rounded-lg file:px-4 file:py-2 file:bg-gray-800 file:text-gray-200 hover:file:bg-gray-700"
+        required
+      >
+    </div>
+
+    <!-- PDF -->
+    <div>
+      <label class="block mb-2 font-medium text-gray-300">Product PDF</label>
+      <input 
+        type="file" 
+        name="pdf" 
+        accept="application/pdf"
+        class="block w-full text-gray-200 file:border file:border-gray-600 file:rounded-lg file:px-4 file:py-2 file:bg-gray-800 file:text-gray-200 hover:file:bg-gray-700"
+        required
+      >
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+      <button 
+        type="submit" 
+        class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+      >
+        Add Product
+      </button>
+    </div>
+
+  </form>
+</div>

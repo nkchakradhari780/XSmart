@@ -1,1 +1,88 @@
-<p>sidebar works!</p>
+<div
+  class="bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white w-64 h-screen shadow-2xl transition-all duration-300 ease-in-out sidebar"
+>
+  <!-- Brand -->
+  <div class="p-3 border-b border-gray-700 dark:border-gray-600">
+    <div class="flex items-center space-x-3">
+      <div class="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg">
+        <img src="assets/logo.png" alt="XSmart Logo" class="w-6 h-6" />
+      </div>
+      <div>
+        <h1 class="text-xl font-bold">XSmart</h1>
+        <p class="text-xs text-gray-400">Admin Dashboard</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- User -->
+  <div class="p-4 border-b border-gray-700 dark:border-gray-600">
+    <div class="flex items-center space-x-3">
+      <div
+        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center"
+      >
+        <span class="text-sm font-medium text-white">N</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium truncate">John Doe</p>
+        <p class="text-xs text-gray-400">Admin</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 p-4 h-[70%]">
+    <ul class="space-y-2">
+      <li>
+        <button
+          class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 hover:translate-x-1 transition-all duration-300 group"
+        >
+          <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">inventory_2</i>
+          <span class="font-medium text-gray-300 group-hover:text-white">Products</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 hover:translate-x-1 transition-all duration-300 group"
+        >
+          <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">work_outline</i>
+          <span class="font-medium text-gray-300 group-hover:text-white">Projects</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 hover:translate-x-1 transition-all duration-300 group"
+          routerLink="/dashboard/categories"
+        >
+          <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">category</i>
+          <span class="font-medium text-gray-300 group-hover:text-white">Categories</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 hover:translate-x-1 transition-all duration-300 group"
+        >
+          <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">layers</i>
+          <span class="font-medium text-gray-300 group-hover:text-white">Material</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 hover:translate-x-1 transition-all duration-300 group"
+        >
+          <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">label</i>
+          <span class="font-medium text-gray-300 group-hover:text-white">Tags</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Logout -->
+  <div class="p-2 border-t border-gray-700 dark:border-gray-600">
+    <button
+      class="w-full flex items-center space-x-3 px-3 py-3 rounded-lg hover:bg-red-600 transition-all duration-300 group"
+    >
+      <i class="material-icons text-gray-300 group-hover:text-white w-5 h-5">logout</i>
+      <span class="font-medium text-gray-300 group-hover:text-white">Logout</span>
+    </button>
+  </div>
+</div>

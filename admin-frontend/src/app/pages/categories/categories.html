@@ -1,0 +1,160 @@
+<div class="max-w-5xl mx-auto space-y-12 p-6">
+  <!-- Header -->
+  <h1 class="text-4xl font-bold text-white text-center mb-8">
+    Category Management
+  </h1>
+
+  <!-- Create Category -->
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-4 text-white">Create Category</h2>
+    <form action="/your-backend-endpoint" method="POST" class="flex gap-4">
+      <input
+        type="text"
+        name="categoryName"
+        placeholder="Enter category name"
+        class="flex-1 px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <button
+        type="submit"
+        class="bg-blue-600 px-6 py-2 rounded-lg text-white hover:bg-blue-700 transition"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+
+  <!-- Categories Table -->
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-4 text-white">All Categories</h2>
+    <table
+      class="w-full border-collapse bg-gray-900 rounded-lg overflow-hidden"
+    >
+      <thead class="bg-gray-700 text-white">
+        <tr>
+          <th class="p-3 text-left">ID</th>
+          <th class="p-3 text-left">Category Name</th>
+          <th class="p-3 text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-700 text-white">
+        <tr>
+          <td class="p-3">1</td>
+          <td class="p-3">Electronics</td>
+          <td class="p-3 flex gap-3 justify-center">
+            <button
+              class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white"
+            >
+              Update
+            </button>
+            <button
+              class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td class="p-3">2</td>
+          <td class="p-3">Books</td>
+          <td class="p-3 flex gap-3 justify-center">
+            <button
+              class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white"
+            >
+              Update
+            </button>
+            <button
+              class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td class="p-3">3</td>
+          <td class="p-3">Clothing</td>
+          <td class="p-3 flex gap-3 justify-center">
+            <button
+              class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white"
+            >
+              Update
+            </button>
+            <button
+              class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td class="p-3">4</td>
+          <td class="p-3">Toys</td>
+          <td class="p-3 flex gap-3 justify-center">
+            <button
+              class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white"
+            >
+              Update
+            </button>
+            <button
+              class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Update Category Form -->
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-6 text-white text-center">
+      Update Category
+    </h2>
+    <form
+      action="/your-backend-endpoint"
+      method="POST"
+      class="space-y-4 max-w-xl mx-auto"
+    >
+      <!-- Category ID -->
+      <div>
+        <label for="categoryId" class="block mb-2 font-medium text-white"
+          >Category ID</label
+        >
+        <input
+          type="number"
+          name="categoryId"
+          id="categoryId"
+          placeholder="Enter category ID"
+          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+
+      <!-- Category Name -->
+      <div>
+        <label for="categoryName" class="block mb-2 font-medium text-white"
+          >Category Name</label
+        >
+        <input
+          type="text"
+          name="categoryName"
+          id="categoryName"
+          placeholder="Enter new category name"
+          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button
+          type="submit"
+          class="w-full bg-green-600 py-2 px-4 rounded-lg hover:bg-green-700 transition text-white font-semibold"
+        >
+          Update Category
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
