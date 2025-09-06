@@ -49,12 +49,12 @@
       <tbody class="divide-y divide-gray-700 text-white">
         <tr *ngFor="let category of categories; let i = index">
           <td class="p-3">{{i + 1}}</td>
-          <td class="p-3">{{category.id}}</td>
+          <td class="p-3">{{category.CategoryId}}</td>
           <td class="p-3">{{category.CategoryName}}</td>
           <td class="p-3 flex gap-3 justify-center">
             <button
               class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white"
-              (click)="goToUpdate(category.id)"
+              (click)="goToUpdate(category.CategoryId)"
             >
               Update
             </button>

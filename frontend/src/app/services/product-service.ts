@@ -9,10 +9,6 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  createProduct(product: Product) {
-    return this.http.post<Product>('http://localhost:3000/product', product);
-  }
-
   getAllProducts(): Observable<ProductResponse> {
     return this.http.get<ProductResponse>('http://localhost:3000/product');
   }

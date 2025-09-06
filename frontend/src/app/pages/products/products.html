@@ -19,9 +19,9 @@
     </div>
 
     <!-- Products Grid -->
-    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <div *ngFor="let product of filteredProducts">
-        <app-product-page-card [product]="product" class="up-animation" />
+    <div class="flex flex-wrap gap-6">
+      <div *ngFor="let product of filteredProducts" class="flex-[1_1_250px] max-w-xs">
+      <app-product-page-card [product]="product" class="up-animation" />
       </div>
     </div>
   </main>

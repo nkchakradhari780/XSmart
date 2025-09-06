@@ -1,0 +1,5 @@
+<div class="flex flex-wrap justify-center gap-6">
+  <div *ngFor="let product of products" class="flex-[1_1_250px] max-w-xs">
+    <app-product-page-card [product]="product" />
+  </div>
+</div>

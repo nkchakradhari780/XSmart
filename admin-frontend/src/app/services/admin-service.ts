@@ -33,6 +33,14 @@ export class AdminService {
     return this.http.get<MaterialResponse[]>('http://localhost:3000/material/', {withCredentials: true});
   }
 
+   createProduct(product: Product) {
+    return this.http.post<Product>('http://localhost:3000/product', product);
+  }
+
+  getAllProducts(): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>('http://localhost:3000/product');
+  }
+
 }
 
 export class TagResponse {
@@ -41,7 +49,7 @@ export class TagResponse {
 }
 
 export class CategoryResponse{
-  id!: number;
+  CategoryId!: number;
   CategoryName!: string;
 }
 
@@ -49,3 +57,17 @@ export class MaterialResponse{
   MaterialId!: number;
   MaterialName!: string;
 }
+
+export class Product {
+  ProductId!: number;
+  ProductName!: string;
+  Categories!: Array<CategoryResponse>;
+  Image!: Blob;
+  PdfFile!: Blob;
+}
+
+export class ProductResponse {
+  result!: Array<Product>;
+  response!: string;
+}
+

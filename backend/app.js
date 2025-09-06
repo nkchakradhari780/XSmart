@@ -31,7 +31,7 @@ app.use(cors({
   },
   credentials: true
 }));
- 
+  
 
 console.log('ENV:', process.env.NODE_ENV)
 

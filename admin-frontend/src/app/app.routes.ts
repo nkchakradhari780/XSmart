@@ -3,7 +3,6 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Categories } from './pages/categories/categories';
 import { Materials } from './pages/materials/materials';
 import { Projects } from './pages/projects/projects';
-import { Products } from './pages/products/products';
 import { AddProducts } from './components/add-products/add-products';
 import { UpdateProduct } from './components/update-product/update-product';
 import { Tags } from './pages/tags/tags';
@@ -11,6 +10,8 @@ import { Login } from './components/login/login';
 import { UpdateTag } from './components/update-tag/update-tag';
 import { UpdateCategory } from './components/update-category/update-category';
 import { UpdateMaterial } from './components/update-material/update-material';
+import { Products } from './components/products/products';
+import { ProductsPage } from './pages/products-page/products-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,7 +33,8 @@ export const routes: Routes = [
         { path: 'update/:id', component: UpdateMaterial }
       ]},
       { path: 'projects', component: Projects },
-      { path: 'products', component: Products, children: [
+      { path: 'products', component: ProductsPage, children: [
+        {path: '', component: Products},
         {path: 'add', component: AddProducts},
         {path: 'update', component: UpdateProduct}
       ] }
