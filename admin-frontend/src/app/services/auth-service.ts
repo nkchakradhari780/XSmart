@@ -10,7 +10,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   loginAdmin(admin: Admin): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('http://localhost:3000/login', admin);
+    return this.http.post<LoginResponse>('http://localhost:3000/login', admin,{ withCredentials: true });
+  }
+
+  logoutAdmin(): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>('http://localhost:3000/logout', {}, { withCredentials: true });
   }
 
 }

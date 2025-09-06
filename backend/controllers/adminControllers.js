@@ -3,7 +3,7 @@ import * as adminService from "../services/adminServices.js";
 // Create
 export const createAdmin = async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
+    console.log("Request Body:", req.body);
     const admin = await adminService.createAdmin(req.body);
     res.status(201).json(admin);
   } catch (error) {
@@ -52,7 +52,6 @@ export const deleteAdmin = async (req, res) => {
   }
 };
 
-
 export const adminLogin = async (req, res) => {
   try {
     const { Email, Password } = req.body;
@@ -66,9 +65,9 @@ export const adminLogin = async (req, res) => {
     // set cookie
     res.cookie("admin_token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // cookie secure in production
-      sameSite: "strict",
-      maxAge: 60 * 60 * 1000 // 1h
+      secure: false, // must be true with HTTPS
+      sameSite: "lax", // allow cross-origin cookies
+      maxAge: 60 * 60 * 1000, // 1h
     });
 
     res.json({
@@ -77,8 +76,8 @@ export const adminLogin = async (req, res) => {
         AdminId: admin.AdminId,
         FullName: admin.FullName,
         Email: admin.Email,
-        Role: admin.Role
-      }
+        Role: admin.Role,
+      },
     });
   } catch (err) {
     res.status(401).json({ error: err.message });

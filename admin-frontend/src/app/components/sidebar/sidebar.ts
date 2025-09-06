@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
+
 export class Sidebar {
   isActive=true;
   name!: string;
@@ -17,6 +18,11 @@ export class Sidebar {
   userData: any;
   userId!: number ; // Default userId, can be set dynamically
 
+  constructor(private router: Router) {}
 
-  
+  logout() {
+    sessionStorage.removeItem('admin');
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

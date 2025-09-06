@@ -1,22 +1,36 @@
-<div class="max-w-5xl mx-auto space-y-12 p-6">
-
+<div class="max-w-5xl mx-auto space-y-12 p-6 ">
   <!-- Header -->
   <h1 class="text-4xl font-bold text-white text-center mb-8">Tag Management</h1>
 
   <!-- Create Tag -->
   <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
     <h2 class="text-2xl font-semibold mb-4 text-white">Create Tag</h2>
-    <form action="/your-backend-endpoint" method="POST" class="flex gap-4">
-      <input 
-        type="text" 
-        name="tagName" 
-        placeholder="Enter tag name"
-        class="flex-1 px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        required
-      >
-      <button 
-        type="submit" 
+
+    <form
+      #addTagForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+      class="flex gap-4"
+    >
+      <!-- Tag Name Input -->
+      <div class="flex-1">
+        <input
+          type="text"
+          name="tagName"
+          placeholder="Enter tag name"
+          [(ngModel)]="tagModel.tagName"
+          #tagName="ngModel"
+          required
+          minlength="2"
+          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
         class="bg-blue-600 px-6 py-2 rounded-lg text-white hover:bg-blue-700 transition"
+        [disabled]="addTagForm.invalid"
       >
         Add
       </button>
@@ -26,85 +40,38 @@
   <!-- Tags Table -->
   <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
     <h2 class="text-2xl font-semibold mb-4 text-white">All Tags</h2>
-    <table class="w-full border-collapse bg-gray-900 rounded-lg overflow-hidden">
+    <table
+      class="w-full border-collapse bg-gray-900 rounded-lg overflow-hidden"
+    >
       <thead class="bg-gray-700 text-white">
         <tr>
+          <th class="p-3 text-left">No.</th>
           <th class="p-3 text-left">ID</th>
           <th class="p-3 text-left">Tag Name</th>
           <th class="p-3 text-center">Actions</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-700 text-white">
-        <tr>
-          <td class="p-3">1</td>
-          <td class="p-3">JavaScript</td>
+        <tr *ngFor="let tag of tags; let i = index">
+          <td class="p-3">{{ i + 1 }}</td>
+          <td class="p-3">{{ tag.TagId }}</td>
+          <td class="p-3">{{ tag.TagName }}</td>
           <td class="p-3 flex gap-3 justify-center">
-            <button class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white">Update</button>
-            <button class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="p-3">2</td>
-          <td class="p-3">HTML</td>
-          <td class="p-3 flex gap-3 justify-center">
-            <button class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white">Update</button>
-            <button class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="p-3">3</td>
-          <td class="p-3">CSS</td>
-          <td class="p-3 flex gap-3 justify-center">
-            <button class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white">Update</button>
-            <button class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white">Delete</button>
+            <button
+              class="bg-green-600 px-4 py-1 rounded hover:bg-green-700 text-white cursor-pointer"
+              (click)="goToUpdate(tag.TagId)"
+            >
+              Update
+            </button>
+
+            <button
+              class="bg-red-600 px-4 py-1 rounded hover:bg-red-700 text-white"
+            >
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <!-- Update Tag Form -->
-  <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-    <h2 class="text-2xl font-semibold mb-6 text-white text-center">Update Tag</h2>
-    <form action="/your-backend-endpoint" method="POST" class="space-y-4 max-w-xl mx-auto">
-      
-      <!-- Tag ID -->
-      <div>
-        <label for="tagId" class="block mb-2 font-medium text-white">Tag ID</label>
-        <input 
-          type="number" 
-          name="tagId" 
-          id="tagId" 
-          placeholder="Enter tag ID" 
-          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        >
-      </div>
-
-      <!-- Tag Name -->
-      <div>
-        <label for="tagNameUpdate" class="block mb-2 font-medium text-white">Tag Name</label>
-        <input 
-          type="text" 
-          name="tagName" 
-          id="tagNameUpdate" 
-          placeholder="Enter new tag name" 
-          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        >
-      </div>
-
-      <!-- Submit Button -->
-      <div>
-        <button 
-          type="submit" 
-          class="w-full bg-green-600 py-2 px-4 rounded-lg hover:bg-green-700 transition text-white font-semibold"
-        >
-          Update Tag
-        </button>
-      </div>
-
-    </form>
-  </div>
-
 </div>

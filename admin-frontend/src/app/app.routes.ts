@@ -8,16 +8,20 @@ import { AddProducts } from './components/add-products/add-products';
 import { UpdateProduct } from './components/update-product/update-product';
 import { Tags } from './pages/tags/tags';
 import { Login } from './components/login/login';
+import { UpdateTag } from './components/update-tag/update-tag';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
   {
     path: 'dashboard/:id',
     component: Dashboard,
     children: [
       { path: 'categories', component: Categories },
-      { path: 'tags', component: Tags },
+      { path: 'tags', children: [
+        {path: '', component: Tags},
+        {path: 'update/:id', component: UpdateTag}
+      ]},
       { path: 'materials', component: Materials },
       { path: 'projects', component: Projects },
       { path: 'products', component: Products, children: [
