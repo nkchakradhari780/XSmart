@@ -11,7 +11,7 @@ import indexRoute from './routes/indexRoute.js'
 dotenv.config();
 import db from './config/dbConnection.js'
 
-const app = express();
+const app = express(); 
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

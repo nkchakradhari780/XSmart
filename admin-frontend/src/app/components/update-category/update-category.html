@@ -1,0 +1,50 @@
+<!-- Page Wrapper -->
+<div class="flex items-center justify-center h-[500px] bg-gray-900">
+  <!-- Fixed Size Container -->
+  <div class="w-full max-w-md bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-6 text-white text-center">
+      Update Category
+    </h2>
+    <form action="/your-backend-endpoint" method="POST" class="space-y-4">
+      <!-- Category ID -->
+      <div>
+        <label for="categoryId" class="block mb-2 font-medium text-white">
+          Category ID
+        </label>
+        <input
+          type="number"
+          name="categoryId"
+          id="categoryId"
+          placeholder="Enter category ID"
+          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+
+      <!-- Category Name -->
+      <div>
+        <label for="categoryName" class="block mb-2 font-medium text-white">
+          Category Name
+        </label>
+        <input
+          type="text"
+          name="categoryName"
+          id="categoryName"
+          placeholder="Enter new category name"
+          class="w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button
+          type="submit"
+          class="w-full bg-green-600 py-2 px-4 rounded-lg hover:bg-green-700 transition text-white font-semibold"
+        >
+          Update Category
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

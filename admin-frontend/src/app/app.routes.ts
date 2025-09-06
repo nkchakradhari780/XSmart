@@ -9,6 +9,8 @@ import { UpdateProduct } from './components/update-product/update-product';
 import { Tags } from './pages/tags/tags';
 import { Login } from './components/login/login';
 import { UpdateTag } from './components/update-tag/update-tag';
+import { UpdateCategory } from './components/update-category/update-category';
+import { UpdateMaterial } from './components/update-material/update-material';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,12 +19,18 @@ export const routes: Routes = [
     path: 'dashboard/:id',
     component: Dashboard,
     children: [
-      { path: 'categories', component: Categories },
+      { path: 'categories', children: [
+        { path: '', component: Categories},
+        { path: 'update/:id', component: UpdateCategory}
+      ] },
       { path: 'tags', children: [
         {path: '', component: Tags},
         {path: 'update/:id', component: UpdateTag}
       ]},
-      { path: 'materials', component: Materials },
+      { path: 'materials', children: [
+        { path: '', component: Materials },
+        { path: 'update/:id', component: UpdateMaterial }
+      ]},
       { path: 'projects', component: Projects },
       { path: 'products', component: Products, children: [
         {path: 'add', component: AddProducts},

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminService, TagResponse, TagsResponse } from '../../services/admin-service';
+import { AdminService, TagResponse } from '../../services/admin-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router} from '@angular/router';
@@ -19,7 +19,6 @@ export class Tags {
   onSubmit() {
     this.service.createTag(this.tagModel.tagName).subscribe({
       next: (response: TagResponse) => {
-        const tagId = response.TagId;
         alert("Tag Created Successfully!")
       }, 
       error: (error: any) => {

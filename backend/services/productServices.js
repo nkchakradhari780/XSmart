@@ -66,7 +66,6 @@ export const getLatestProducts = async () => {
        LIMIT 3`
     );
 
-    console.log("Rows", rows[0])
     return rows;
   } catch (error) {
     throw error;
