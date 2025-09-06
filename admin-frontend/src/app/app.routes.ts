@@ -11,7 +11,6 @@ import { UpdateTag } from './components/update-tag/update-tag';
 import { UpdateCategory } from './components/update-category/update-category';
 import { UpdateMaterial } from './components/update-material/update-material';
 import { Products } from './components/products/products';
-import { ProductsPage } from './pages/products-page/products-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,24 +19,32 @@ export const routes: Routes = [
     path: 'dashboard/:id',
     component: Dashboard,
     children: [
-      { path: 'categories', children: [
-        { path: '', component: Categories},
-        { path: 'update/:id', component: UpdateCategory}
-      ] },
-      { path: 'tags', children: [
-        {path: '', component: Tags},
-        {path: 'update/:id', component: UpdateTag}
-      ]},
-      { path: 'materials', children: [
-        { path: '', component: Materials },
-        { path: 'update/:id', component: UpdateMaterial }
-      ]},
+      {
+        path: 'categories', children: [
+          { path: '', component: Categories },
+          { path: 'update/:id', component: UpdateCategory }
+        ]
+      },
+      {
+        path: 'tags', children: [
+          { path: '', component: Tags },
+          { path: 'update/:id', component: UpdateTag }
+        ]
+      },
+      {
+        path: 'materials', children: [
+          { path: '', component: Materials },
+          { path: 'update/:id', component: UpdateMaterial }
+        ]
+      },
       { path: 'projects', component: Projects },
-      { path: 'products', component: ProductsPage, children: [
-        {path: '', component: Products},
-        {path: 'add', component: AddProducts},
-        {path: 'update', component: UpdateProduct}
-      ] }
+      {
+        path: 'products', children: [
+          { path: '', component: Products },
+          { path: 'create', component: AddProducts },
+          { path: 'update', component: UpdateProduct }
+        ]
+      }
     ]
   }
 ];
