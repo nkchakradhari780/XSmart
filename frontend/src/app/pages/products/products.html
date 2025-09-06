@@ -1,15 +1,16 @@
 <div class="min-h-screen flex flex-col">
   <!-- Navbar -->
-  <!-- <app-product-page-header/> -->
   <app-navbar [position]="'relative'" />
 
   <main class="flex-1 w-[85%] mx-auto px-4 sm:px-6 lg:px-8 py-2 pb-25">
+    <!-- Breadcrumb -->
     <div class="mb-8">
       <span class="font-semibold text-[#4B5563] mb-6">Home</span>
       <span class="font-semibold text-[#9CA3AF] mb-6"> > </span>
       <span class="font-semibold text-[#111827] mb-6">Products</span>
     </div>
 
+    <!-- Search -->
     <div class="flex justify-end mb-5">
       <app-search-bar
         class="w-[40%]"
@@ -17,13 +18,10 @@
       />
     </div>
 
+    <!-- Products Grid -->
     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <div *ngFor="let product of products">
-        <div
-          *ngIf="!searchText || product.ProductName.toLowerCase().includes(searchText.toLowerCase())"
-        >
-          <app-product-page-card [product]="product" class="up-animation" />
-        </div>
+      <div *ngFor="let product of filteredProducts">
+        <app-product-page-card [product]="product" class="up-animation" />
       </div>
     </div>
   </main>

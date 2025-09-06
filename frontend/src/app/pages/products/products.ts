@@ -32,11 +32,17 @@ export class Products {
       error: (err) => {
         console.error('Error fetching products:', err);
       }
-    })
+    });
   }
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
-    // console.log('Search text updated:', this.searchText);
+  }
+
+  get filteredProducts(): Product[] {
+    if (!this.searchText) return this.products;
+    return this.products.filter(product =>
+      product.ProductName.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 }
