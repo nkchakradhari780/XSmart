@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { AdminService, Product, ProductResponse } from '../../services/admin-service';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ProductPageCard } from "../product-page-card/product-page-card";
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ProductPageCard } from '../../components/product-page-card/product-page-card';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule, ProductPageCard, RouterLink],
+  imports: [RouterLink,CommonModule,ProductPageCard],
   templateUrl: './products.html',
   styleUrls: ['./products.css']
 })

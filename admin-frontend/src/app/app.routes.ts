@@ -10,7 +10,7 @@ import { Login } from './components/login/login';
 import { UpdateTag } from './components/update-tag/update-tag';
 import { UpdateCategory } from './components/update-category/update-category';
 import { UpdateMaterial } from './components/update-material/update-material';
-import { Products } from './components/products/products';
+import { Products } from './pages/products/products';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -40,9 +40,9 @@ export const routes: Routes = [
       { path: 'projects', component: Projects },
       {
         path: 'products', children: [
-          { path: '', component: Products },
+          { path: '', component: Products},
           { path: 'create', component: AddProducts },
-          { path: 'update', component: UpdateProduct }
+          { path: 'update/:id', component: UpdateProduct }
         ]
       }
     ]

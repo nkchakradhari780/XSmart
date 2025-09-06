@@ -1,15 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-page-card',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, RouterLink],
   templateUrl: './product-page-card.html',
   styleUrls: ['./product-page-card.css']
 })
 export class ProductPageCard {
   @Input() product: any;
+
+  userId: number = 3;
 
   // product-page-card.component.ts
   openPdf(base64Pdf: string) {
