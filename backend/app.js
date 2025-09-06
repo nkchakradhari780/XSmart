@@ -15,15 +15,23 @@ const app = express();
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const allowedOrigins = process.env.CORS_ORIGINS.split(","); 
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors({
-    origin: process.env.CORS_ORIGIN, 
-    credentials: process.env.CORS_CREDENTIALS
-}))
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+ 
 
 console.log('ENV:', process.env.NODE_ENV)
 

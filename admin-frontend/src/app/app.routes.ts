@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: Login },
   {
-    path: 'dashboard',
+    path: 'dashboard/:id',
     component: Dashboard,
     children: [
       { path: 'categories', component: Categories },
